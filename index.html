@@ -8,46 +8,34 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    body{
-      font-family:'Inter', sans-serif;
-      background:#050c1c;
-      color:#cde6ff;
-      overflow-x:hidden;
-    }
-    body::before{
-      content:"";
-      position:fixed;inset:0;
+    body{font-family:'Inter', sans-serif;background:#050c1c;color:#cde6ff;overflow-x:hidden;}
+    body::before{content:"";position:fixed;inset:0;
       background-image:linear-gradient(#0b2a44 1px, transparent 1px),
                        linear-gradient(90deg, #0b2a44 1px, transparent 1px);
-      background-size:60px 60px;
-      opacity:.3;z-index:-1;
-    }
+      background-size:60px 60px;opacity:.3;z-index:-1;}
 
     /* Header */
-    header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:18px 40px;
-      background:#050c1c;
-      position:fixed;
-      top:0;left:0;right:0;
-      z-index:1000;
-      border-bottom:1px solid rgba(0,255,240,0.15);
-    }
-    header::after{
-      content:"";
-      position:absolute;
-      bottom:0;left:0;right:0;
-      height:2px;
-      background:#00f7ff;
-      box-shadow:0 0 12px #00f7ff;
-    }
+    header{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;background:#050c1c;
+      position:fixed;top:0;left:0;right:0;z-index:1000;border-bottom:1px solid rgba(0,255,240,0.15);}
+    header::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:#00f7ff;box-shadow:0 0 12px #00f7ff;}
     .brand{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;color:#00f7ff;letter-spacing:.05em;}
-    nav{display:flex;gap:42px;margin-left:auto;justify-content:flex-end;}
+    nav{display:flex;gap:42px;margin-left:auto;justify-content:flex-end;transition:.3s;}
     nav a{color:#9defff;text-decoration:none;font-weight:600;letter-spacing:.05em;transition:.3s;}
     nav a:hover{color:#fff}
     nav a.active{color:#fff;text-shadow:0 0 12px #00f7ff;}
+
+    /* HAMBURGER */
+    .hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;margin-left:20px;}
+    .hamburger span{width:26px;height:3px;background:#00f7ff;border-radius:2px;transition:.3s;}
+    @media (max-width:768px){
+      nav{position:absolute;top:100%;right:20px;background:#050c1c;flex-direction:column;align-items:flex-start;
+        width:200px;padding:20px;gap:20px;border:1px solid rgba(0,255,240,.2);border-radius:8px;display:none;}
+      nav.show{display:flex;}
+      .hamburger{display:flex;}
+    }
+    .hamburger.active span:nth-child(1){transform:rotate(45deg) translateY(8px);}
+    .hamburger.active span:nth-child(2){opacity:0;}
+    .hamburger.active span:nth-child(3){transform:rotate(-45deg) translateY(-8px);}
 
     /* Hero */
     .hero{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:160px 24px 80px;gap:60px;flex-wrap:wrap;}
@@ -127,6 +115,11 @@
       <a href="#projects">Project</a>
       <a href="#contact">Contact</a>
     </nav>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
 
   <!-- Hero -->
@@ -136,7 +129,7 @@
       <h3>HELLO, I'M</h3>
       <h1>INDRA SAEBUDI</h1>
       <div class="typing-box"><span class="typing"></span><span class="cursor"></span></div>
-      <p>Saya adalah seorang remaja yang memiliki minat besar dalam pengembangan Front-End dan teknologi web modern. Saya membuat website ini 100% menggunakan AI.</p>
+      <p>Saya adalah seorang remaja yang memiliki minat besar dalam pengembangan Front-End dan teknologi web modern.</p>
       <blockquote>"Whoever strives shall succeed."</blockquote>
       <div class="socials">
         <a class="social-btn" href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
@@ -157,7 +150,7 @@
     <div class="about-content">
       <div class="about-img"><img src="indr1.jpg" alt="About Image"></div>
       <div class="about-text">
-        <p>Halo, saya <span class="highlight">Indra Saebudi</span>. Saya seorang remaja yang bersemangat dalam dunia <b>Front-End Development</b> dan teknologi web modern. Saya percaya bahwa teknologi bukan hanya alat, tapi juga seni yang bisa menghubungkan kreativitas dengan solusi nyata.</p>
+        <p>Halo, saya <span class="highlight">Indra Saebudi</span>. Saya seorang remaja yang bersemangat dalam dunia <b>Front-End Development</b> dan teknologi web modern.</p>
         <div class="skills">
           <div class="skill"><span>HTML</span><div class="skill-bar"><div class="skill-fill" style="width:50%"></div></div></div>
           <div class="skill"><span>CSS</span><div class="skill-bar"><div class="skill-fill" style="width:25%"></div></div></div>
@@ -173,8 +166,8 @@
     <h2 class="section-title">My Projects</h2>
     <div class="projects-grid">
       <div class="project-card"><img src="robot1.png" alt="Project 1"><h3>Portfolio Website</h3><p>Website pribadi dengan desain futuristik menggunakan HTML, CSS, dan AI.</p><a href="#" class="project-btn">🔗 View Demo</a></div>
-      <div class="project-card"><img src="robot2.png"alt="Project 2"><h3>3D Robot Design</h3><p>Desain robot 3D untuk animasi dan presentasi teknologi.</p><a href="#" class="project-btn">🔗 View Demo</a></div>
-      <div class="project-card"><img src="robot3.png"alt="Project 3"><h3>Mini Game</h3><p>Game sederhana berbasis JavaScript dengan fitur interaktif.</p><a href="#" class="project-btn">🔗 View Demo</a></div>
+      <div class="project-card"><img src="robot2.png" alt="Project 2"><h3>3D Robot Design</h3><p>Desain robot 3D untuk animasi dan presentasi teknologi.</p><a href="#" class="project-btn">🔗 View Demo</a></div>
+      <div class="project-card"><img src="robot3.png" alt="Project 3"><h3>Mini Game</h3><p>Game sederhana berbasis JavaScript dengan fitur interaktif.</p><a href="#" class="project-btn">🔗 View Demo</a></div>
     </div>
   </section>
 
@@ -229,14 +222,26 @@
         const top=window.scrollY;
         const offset=sec.offsetTop-150;
         const height=sec.offsetHeight;
-        if(top>=offset && top<offset+height){
-          current=sec.getAttribute("id");
-        }
+        if(top>=offset && top<offset+height){current=sec.getAttribute("id");}
       });
       navLinks.forEach(link=>{
         link.classList.remove("active");
-        if(link.getAttribute("href").includes(current)){
-          link.classList.add("active");
+        if(link.getAttribute("href").includes(current)){link.classList.add("active");}
+      });
+    });
+
+    // HAMBURGER Toggle
+    const hamburger=document.querySelector(".hamburger");
+    const nav=document.querySelector("header nav");
+    hamburger.addEventListener("click",()=>{
+      hamburger.classList.toggle("active");
+      nav.classList.toggle("show");
+    });
+    navLinks.forEach(link=>{
+      link.addEventListener("click",()=>{
+        if(window.innerWidth<=768){
+          hamburger.classList.remove("active");
+          nav.classList.remove("show");
         }
       });
     });
